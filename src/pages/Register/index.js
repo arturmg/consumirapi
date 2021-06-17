@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import { get } from 'lodash';
+import { useSelector } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
@@ -10,6 +11,8 @@ import history from '../../services/history';
 import Loading from '../../components/Loading';
 
 export default function Register() {
+  const user = useSelector((state) => state.auth.user);
+  console.log('REGISTER_user', user);
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,7 +42,6 @@ export default function Register() {
     setIsLoading(true);
 
     try {
-      // const response = await axios.post('/users/', { nome, email, password });
       await axios.post('/users/', { nome, email, password });
       toast.success('Cadastrado com sucesso!');
       setIsLoading(false);
@@ -76,7 +78,7 @@ export default function Register() {
             placeholder="Seu e-mail"
           />
         </label>
-        <label htmlFor="nome">
+        <label htmlFor="password">
           Senha:
           <input
             type="password"

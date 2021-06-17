@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 export default function MyRoute({ component: Component, isClosed, ...rest }) {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-
   if (isClosed && !isLoggedIn) {
     return (
       <Redirect
@@ -13,7 +12,6 @@ export default function MyRoute({ component: Component, isClosed, ...rest }) {
       />
     );
   }
-
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Route {...rest} component={Component} />;
 }

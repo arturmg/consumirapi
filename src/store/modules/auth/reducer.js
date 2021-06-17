@@ -9,6 +9,7 @@ const initialState = {
 
 // eslint-disable-next-line func-names
 export default function (state = initialState, action) {
+  console.log('REDUCER_1', { ...state });
   switch (action.type) {
     case types.LOGIN_SUCCESS: {
       const newState = { ...state };
@@ -16,6 +17,7 @@ export default function (state = initialState, action) {
       newState.token = action.payload.token;
       newState.user = action.payload.user;
       newState.isLoading = false;
+      console.log('REDUCER_2', newState);
       return newState;
     }
 

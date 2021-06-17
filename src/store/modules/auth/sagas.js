@@ -10,12 +10,11 @@ import history from '../../../services/history';
 function* loginRequest({ payload }) {
   try {
     const response = yield call(axios.post, '/tokens', payload);
+    console.log('SAGAS', { ...response.data });
     yield put(actions.loginSuccess({ ...response.data }));
-
     toast.success('Você fez loggin!');
 
     axios.defaults.headers.Authorization = `Bearer ${response.data.token}`;
-
     history.push(payload.prevPath);
   } catch (e) {
     toast.error('Usuário ou senha inválidos!!!');

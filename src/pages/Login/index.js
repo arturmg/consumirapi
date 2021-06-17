@@ -46,7 +46,7 @@ export default function Login(props) {
 
       <Form onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Seu e-mail"

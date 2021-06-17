@@ -8,6 +8,7 @@ export function loginRequest(payload) {
 }
 
 export function loginSuccess(payload) {
+  console.log('ACTIONS', payload);
   return {
     type: types.LOGIN_SUCCESS,
     payload,
